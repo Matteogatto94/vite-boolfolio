@@ -1,9 +1,37 @@
 <script>
 //import HelloWorld from './components/HelloWorld.vue'
+import axios from 'axios'
 
 export default {
     components: {
 
+    },
+    data() {
+        return {
+            projects: null,
+            base_api_url: 'http://localhost:8000',
+            loading: true,
+            error: null
+        }
+    },
+    methods: {
+        getProjects(url) {
+            axios
+                .get(url)
+                .then(response => {
+                    console.log(response);
+                    this.projects = response.data.results;
+                    this.loading = false
+                })
+                .catch(error => {
+                    console.error(error)
+                    this.error = error.message
+                    this.loading = false
+                })
+        }
+    },
+    mounted() {
+        this.getProjects(this.base_api_url + '/api/projects');
     }
 }
 </script>

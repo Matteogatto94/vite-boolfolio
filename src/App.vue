@@ -1,37 +1,10 @@
 <script>
-//import HelloWorld from './components/HelloWorld.vue'
+import ProjectCards from './components/ProjectCards.vue'
 import axios from 'axios'
 
 export default {
     components: {
-
-    },
-    data() {
-        return {
-            projects: null,
-            base_api_url: 'http://localhost:8000',
-            loading: true,
-            error: null
-        }
-    },
-    methods: {
-        getProjects(url) {
-            axios
-                .get(url)
-                .then(response => {
-                    console.log(response);
-                    this.projects = response.data.results;
-                    this.loading = false
-                })
-                .catch(error => {
-                    console.error(error)
-                    this.error = error.message
-                    this.loading = false
-                })
-        }
-    },
-    mounted() {
-        this.getProjects(this.base_api_url + '/api/projects');
+        ProjectCards
     }
 }
 </script>
@@ -41,11 +14,9 @@ export default {
         <div class="container">
 
             <h1>Projects:</h1>
-            <!--<div class="row">
-                <div class="col-12 d-flex flex-column justify-content-center align-items-center vh-100">
-
-                </div>
-            </div>-->
+            <div class="row row-cols-1 row-cols-sm-3 g-4">
+                <ProjectCards />
+            </div>
         </div>
     </section>
 </template>

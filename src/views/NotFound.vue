@@ -9,7 +9,7 @@ export default {
         <p class="leed">
             Ops, Page not found!
         </p>
-        <router-link :to="/">Go to HomePage</router-link>
+        <router-link to="/">Go to HomePage</router-link>
     </div>
 </template>
 

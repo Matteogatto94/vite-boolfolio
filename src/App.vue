@@ -1,6 +1,5 @@
 <script>
 import ProjectCards from './components/ProjectCards.vue'
-import axios from 'axios'
 
 export default {
     components: {
@@ -15,7 +14,7 @@ export default {
 
             <h1>Projects:</h1>
             <div class="row row-cols-1 row-cols-sm-3 g-4">
-                <ProjectCards />
+                <router-view></router-view>
             </div>
         </div>
     </section>

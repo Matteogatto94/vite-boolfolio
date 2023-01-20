@@ -53,7 +53,8 @@ export default {
                         <div class="card-body">
                             <h4>{{ project.title }}</h4>
                             <p>{{ project.body }}</p>
-                            <a href="#">Read More</a>
+                            <router-link :to="{ name: 'single-project', params: { slug: project.slug } }">Read
+                                More</router-link>
                         </div>
 
                         <div class="card-footer">

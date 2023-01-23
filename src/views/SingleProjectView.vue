@@ -1,23 +1,25 @@
 <script>
 import axios from 'axios'
+import { store } from '../store.js'
+
 export default {
     name: 'SingleProjectView',
     data() {
         return {
             project: [],
-            api_base_url: 'http://localhost:8000'
+            store
         }
     },
     mounted() {
         //console.log(this.$route.params.slug);
-        const url = this.api_base_url + '/api/projects/' + this.$route.params.slug
+        const url = this.store.api_base_url + '/api/projects/' + this.$route.params.slug
         console.log(url);
         axios.get(url)
             .then(response => {
                 if (response.data.success) {
                     this.project = response.data.project
                 } else {
-
+                    this.$router.push({ name: 'not-found' })
                 }
                 console.log(response);
             }).catch(error => {
